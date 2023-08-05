@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess Maven</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/adminPanel.css">
+</head>
+
+<body>
+    <!-- Dashboard -->
+    <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
+        <!-- Vertical Navbar -->
+        <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg"
+            id="navbarVertical">
+            <div class="container-fluid">
+                <!-- Toggler -->
+                <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Brand -->
+                <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#dashboard">
+                    <strong>Mess Maven</strong>
+                </a>
+
+                <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="sidebarCollapse">
+                    <!-- Navigation -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#dashboard">
+                                <i class="bi bi-house"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#menu">
+                                <i class="bi bi-bar-chart"></i> Menu
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#feedbacks">
+                                <i class="bi bi-chat"></i> Feedbacks
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#students">
+                                <i class="bi bi-person"></i> Students
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#complaints">
+                                <i class="bi bi-exclamation-square"></i> Complaints
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Divider -->
+                    <hr class="navbar-divider my-5 opacity-20">
+
+                    <!-- Push content down -->
+                    <div class="mt-auto"></div>
+                    <!-- User (md) -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                <i class="bi bi-box-arrow-left"></i> Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Main content -->
+        <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+            <!-- Header -->
+            <header class="bg-surface-primary border-bottom pt-6">
+                <div class="container-fluid">
+                    <div class="mb-npx">
+                        <div class="row align-items-center">
+                            <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                                <!-- Title -->
+                                <h1 class="h2 mb-3 ls-tight ">Admin</h1>
+                            </div>
+                            <!-- Actions -->
+                        </div>
+                        <!-- Nav -->
+                    </div>
+                </div>
+            </header>
+            <!-- Main -->
+            <main class="py-6 bg-surface-secondary">
+                <div class="container-fluid">
+                    <!-- Card stats -->
+                    <div class="row g-6 mb-20" id="dashboard">
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card shadow border-0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Meals
+                                                Booked</span>
+                                            <span class="h3 font-bold mb-0">75000</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                                                <i class="bi bi-bar-chart"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 mb-0 text-sm">
+                                        <span class="badge badge-pill bg-soft-success text-success me-2">
+                                            <i class="bi bi-arrow-up me-1"></i>13%
+                                        </span>
+                                        <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card shadow border-0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total
+                                                Students Registered</span>
+                                            <span class="h3 font-bold mb-0">1500</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
+                                                <i class="bi bi-people"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 mb-0 text-sm">
+                                        <span class="badge badge-pill bg-soft-success text-success me-2">
+                                            <i class="bi bi-arrow-up me-1"></i>30%
+                                        </span>
+                                        <span class="text-nowrap text-xs text-muted">Since last year</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card shadow border-0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Meals Booked
+                                                Each Day</span>
+                                            <span class="h3 font-bold mb-0">1400</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
+                                                <i class="bi bi-bar-chart"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 mb-0 text-sm">
+                                        <span class="badge badge-pill bg-soft-danger text-danger me-2">
+                                            <i class="bi bi-arrow-down me-1"></i>-5%
+                                        </span>
+                                        <span class="text-nowrap text-xs text-muted">Since last year</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card shadow border-0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <span
+                                                class="h6 font-semibold text-muted text-sm d-block mb-2">Feedbacks</span>
+                                            <span class="h3 font-bold mb-0">95%</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
+                                                <i class="bi bi-chat"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 mb-0 text-sm">
+                                        <span class="badge badge-pill bg-soft-success text-success me-2">
+                                            <i class="bi bi-arrow-up me-1"></i>10%
+                                        </span>
+                                        <span class="text-nowrap text-xs text-muted">+ve feedbacks since last
+                                            month</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Graph -->
+                    <canvas id="lineChart" class="mb-20"></canvas>
+
+                    <div class="card shadow border-0 mb-20" id="menu">
+                        <div class="card-header mb-5">
+                            <h5 class="mb-0" style="text-align: center;">What is going to be in today's menu</h5>
+                        </div>
+                        <div id="creatMenu">
+                            <form action="/<%= id %>/admin/createMenu" method="post">
+                                <div class="row">
+                                    <div class="col">
+                                        <h3 style="text-align: center; margin-bottom: 2rem;">Breakfast</h3>
+                                        <div class="md-form form-lg menuItemAdd">
+                                            <input type="text" id="inputLGEx" name="breakfastMc"
+                                                class="form-control form-control-md" placeholder="Enter Main Course" required>
+                                        </div>
+                                        <div class="md-form form-lg menuItemAdd">
+                                            <input type="text" id="inputLGEx" name="breakfastDe"
+                                                class="form-control form-control-md" placeholder="Enter Desert" required>
+                                        </div>
+                                        <div class="md-form form-lg menuItemAdd">
+                                            <input type="text" id="inputLGEx" name="breakfastDr"
+                                                class="form-control form-control-md" placeholder="Enter Drink" required>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h3 style="text-align: center; margin-bottom: 2rem;">Lunch</h3>
+                                        <div class="md-form form-lg menuItemAdd">
+                                            <input type="text" id="inputLGEx" name="lunchMc"
+                                                class="form-control form-control-md" placeholder="Enter Main Course" required>
+                                        </div>
+                                        <div class="md-form form-lg menuItemAdd">
+                                            <input type="text" id="inputLGEx" name="lunchDe"
+                                                class="form-control form-control-md" placeholder="Enter Desert" required>
+                                        </div>
+                                        <div class="md-form form-lg menuItemAdd">
+                                            <input type="text" id="inputLGEx" name="lunchDr"
+                                                class="form-control form-control-md" placeholder="Enter Drink" required>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h3 style="text-align: center; margin-bottom: 2rem;">Dinner</h3>
+                                        <div class="md-form form-lg menuItemAdd">
+                                            <input type="text" id="inputLGEx" name="dinnerMc"
+                                                class="form-control form-control-md" placeholder="Enter Main Course" required>
+                                        </div>
+                                        <div class="md-form form-lg menuItemAdd">
+                                            <input type="text" id="inputLGEx" name="dinnerDe"
+                                                class="form-control form-control-md" placeholder="Enter Desert" required>
+                                        </div>
+                                        <div class="md-form form-lg menuItemAdd">
+                                            <input type="text" id="inputLGEx" name="dinnerDr"
+                                                class="form-control form-control-md" placeholder="Enter Drink" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-8">
+                                    <button type="submit" class="btn btn-primary" style="margin-left:33rem">Create
+                                        today's menu</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="card shadow border-0 mb-20" id="students">
+                        <div class="card-header">
+                            <h5 class="mb-0">Students</h5>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-nowrap">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Course</th>
+                                        <th scope="col">Hostel</th>
+                                        <th scope="col">Payment</th>
+                                        <th scope="col">Status</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <% for(let i=0;i<students.length;i++){ %>
+                                        <tr>
+                                            <td>
+                                                <p class="text-heading font-semibold">
+                                                    <%= students[i].name %>
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <%= students[i].course %>
+                                            </td>
+                                            <td>
+                                                <p class="text-heading font-semibold">
+                                                    <%= students[i].hostel %>
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <%= students[i].payment %>
+                                            </td>
+                                            <td>
+                                                <span class="badge badge-lg badge-dot">
+                                                    <% if(students[i].payment===0) { %>
+                                                        <i class="bg-success"></i>Cleared
+                                                        <% }else{ %>
+                                                            <i class="bg-warning"></i>Dued
+                                                            <% } %>
+                                                </span>
+                                            </td>
+                                            <td class="text-end">
+                                                <form action="/<%= id %>/admin/deleteStudent" method="post">
+                                                    <input type="hidden" name="studentId" value="<%= students[i].id %>">
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </form>
+
+                                            </td>
+                                        </tr>
+                                        <% } %>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer border-0 py-5">
+                            <span class="text-muted text-sm">Showing <%= students.length %> items out of <%=
+                                        students.length %> results found</span>
+                        </div>
+                    </div>
+
+                    <div class="card shadow border-0 mb-20" id="complaints">
+                        <div class="card-header">
+                            <h5 class="mb-0">Complaints</h5>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-nowrap">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Complaint</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for(let i=0;i<complaints.length;i++){ %>
+                                        <tr>
+                                            <td>
+                                                <%= i+1 %>
+                                            </td>
+                                            <td>
+                                                <%= complaints[i] %>
+                                            </td>
+                                        </tr>
+
+                                        <% } %>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer border-0 py-5">
+                            <span class="text-muted text-sm">Showing <%= complaints.length %> items out of <%=
+                                        complaints.length %> results found</span>
+                        </div>
+                    </div>
+
+                    <div class="card shadow border-0 mb-20" id="feedbacks">
+                        <div class="card-header">
+                            <h5 class="mb-0">Feedbacks</h5>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-nowrap">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Comment</th>
+                                        <th>Rating</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for(let i=0;i<feedbacks.length;i++) { %>
+                                        <tr>
+                                            <td>
+                                                <%= i+1 %>
+                                            </td>
+                                            <td>
+                                                <%= feedbacks[i].comment %>
+                                            </td>
+                                            <td>
+                                                <% if(feedbacks[i].rating==='Very Good' ){ %>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <% }else if(feedbacks[i].rating==='Good' ){ %>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <% }else if(feedbacks[i].rating==='Average' ){ %>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-half"></i>
+                                                            <% }else if(feedbacks[i].rating==='Bad' ){ %>
+                                                                <i class="bi bi-star-fill"></i>
+                                                                <i class="bi bi-star-fill"></i>
+                                                                <% } else{%>
+                                                                    <i class="bi bi-star-fill"></i>
+                                                                    <% } %>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                            <tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer border-0 py-5">
+                            <span class="text-muted text-sm">Showing <%= feedbacks.length %> items out of <%=
+                                        feedbacks.length %> results found</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script>
+<script src="/js/adminPanel.js"></script>
+
+</html>

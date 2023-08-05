@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess Maven</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/editProfile.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="head">
+        <div class="container">
+            <a class="navbar-brand" href="/">Mess Maven</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/<%= id %>/dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/<%= id %>/profile">Profile </a>
+                    </li>
+                    <li class="nav-item" id="logoutbtn">
+                        <a class="nav-link" href="/">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container" id="edit">
+
+        <form action="/<%= id %>/editProfile" method="post">
+            <div class="row">
+                <div class="col">
+                    <!-- studentId input -->
+                    <div class="form-outline">
+                        <input type="number" maxlength="9" id="studentId"  name="studentId" class="form-control"required />
+                        <label class="form-label" for="studentId">Student Id</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- Course input -->
+                    <div class="form-outline">
+                        <input type="text" id="course" name="course" class="form-control"required />
+                        <label class="form-label" for="course">Course</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- Year input -->
+                    <div class="form-outline">
+                        <input type="number" min="1" max="4" id="year" name="year" class="form-control" required/>
+                        <label class="form-label" for="year">Year</label>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row">
+                
+                <div class="col">
+                    <!-- Hostel input -->
+                    <div class="form-outline">
+                        <input type="text" id="hostel" name="hostel" class="form-control" required/>
+                        <label class="form-label" for="hostel">Hostel</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- Phone input -->
+                    <div class="form-outline">
+                        <input type="number" maxlength="10" id="phone" name="phone" class="form-control" required/>
+                        <label class="form-label" for="phone">Phone</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- address input -->
+                    <div class="form-outline">
+                        <input type="text" id="address" name="address" class="form-control" required />
+                        <label class="form-label" for="address">Permanent Address</label>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="col">
+                        <button type="submit" class="btn btn-primary" id="updateButton">Update</button>
+                    
+                </div>
+            </div>
+        </form>
+       
+
+    </div>
+   
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+body{
+    background-color: #0A1828;
+    color: #178582;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+hr{
+    border-top: .1rem solid white;
+}
+
+/* Navbar */
+#head a{
+    color: #178582;
+}
+
+#head .navbar-brand{
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.navbar{
+    position: sticky;
+    top: 0;
+    background-color: #0A1828;
+    z-index: 1;
+    box-shadow: 0px 0px 30px black;
+}
+nav{
+    padding: 0 6rem;
+}
+nav h1{
+    letter-spacing: .3rem;
+}
+
+#head li a{
+    letter-spacing: .2rem;
+}
+
+#head .active a{
+    color: rgb(191, 191, 168);
+}
+
+#head li a:hover{
+    color: rgb(191, 191, 168);
+}
+
+.navbar-nav{
+    margin-left: auto;
+}
+
+/* Container */
+
+#signupForm{
+    color: black;
+    padding-top: 2rem;
+}
+
+.card{
+    background-color: beige;
+}

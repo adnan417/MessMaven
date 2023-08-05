@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mess Maven</title>
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="head">
+    <div class="container">
+      <a class="navbar-brand" href="/">Mess Maven</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/<%= id %>/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/<%= id %>/profile">Profile </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#section2">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#section3">Feedback</a>
+          </li>
+          <li class="nav-item" id="logoutbtn">
+            <a class="nav-link" href="/">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </nav>
+
+  <div class="container">
+    <h1>Welcome <%= name %> !</h1>
+    <section id="section1">
+      <div class="book">
+        <h2>Delicious meals just a click away</h2>
+
+        <form action="/<%= id %>/book-meal" method="post">
+          <input type="hidden" name="email" value="<%= email %>">
+          <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Book your
+            meal!</button>
+        </form>
+
+        <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog d-flex justify-content-center">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><strong>OTP verification</strong> </h5>
+              </div>
+              <div class="modal-body p-4">
+                <form class="form-outline mb-2" action="/<%= id %>/verifyotp" method="post">
+                  <input type="number" maxlength="6" id="otp" name="otp" class="form-control" placeholder="Enter 6-digit otp" required/>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" style="padding:.5rem 1rem"
+                      data-bs-dismiss="modal">Back</button>
+                    <button type="submit" class="btn btn-primary" style="padding:.5rem 1rem">Verify</button>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="attendance">
+        <h2>Your this month's attendance</h2>
+        <p id="counter">
+          <%= attendance %>
+        </p>
+      </div>
+    </section>
+
+    <hr>
+
+    <section id="section2">
+      <div class="menu">
+        <div class="date">
+          <h2 id="today">Todayyyyy</h2>
+        </div>
+        <div id="main">
+          <div class="item">
+            <h3>Breakfast</h3>
+            <ul>
+              <% for(let i=0;i<3;i++) { %>
+                <li>
+                  <%= menu.breakfast[i] %>
+                </li>
+                <% } %>
+            </ul>
+            <p>* Food will be available from 8 A.M to 9 A.M</p>
+          </div>
+          <div class="item">
+            <h3>Lunch</h3>
+            <ul>
+              <% for(let i=0;i<3;i++) { %>
+                <li>
+                  <%= menu.lunch[i] %>
+                </li>
+                <% } %>
+            </ul>
+            <p>* Food will be available from 1 P.M to 2:30 P.M</p>
+          </div>
+          <div class="item">
+            <h3>Dinner</h3>
+            <ul>
+              <% for(let i=0;i<3;i++) { %>
+                <li>
+                  <%= menu.dinner[i] %>
+                </li>
+                <% } %>
+            </ul>
+            <p>* Food will be available from 9 P.M to 10:30 P.M</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <section id="section3">
+      <div class="feedback">
+        <div class="mx-0 mx-sm-auto">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title text-white mt-2" id="exampleModalLabel">Give your feedback here.</h5>
+            </div>
+            <div class="modal-body">
+              <div class="text-center">
+                <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+                <p>
+                  <strong>Your opinion matters</strong>
+                </p>
+                <p>
+                  Have some ideas how to improve our product?
+                  <strong>Give us your feedback.</strong>
+                </p>
+              </div>
+
+              <hr />
+
+              <form class="px-4" action="/<%= id %>/feedback" method="post" id="feedbackform">
+                <div id="leftPart">
+                  <p class="text-center"><strong>Your rating:</strong></p>
+
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" name="rating" value="Very Good" id="radio3Example1" />
+                    <label class="form-check-label" for="radio3Example1">
+                      Very good
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" name="rating" value="Good" id="radio3Example2" />
+                    <label class="form-check-label" for="radio3Example2">
+                      Good
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" name="rating" value="Average" id="radio3Example3" />
+                    <label class="form-check-label" for="radio3Example3">
+                      Average
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" name="rating" value="Bad" id="radio3Example4" />
+                    <label class="form-check-label" for="radio3Example4">
+                      Bad
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" name="rating" value="Very Bad" id="radio3Example5" />
+                    <label class="form-check-label" for="radio3Example5">
+                      Very bad
+                    </label>
+                  </div>
+                </div>
+
+                <div id="rightPart">
+                  <p class="text-center"><strong>What could we improve?</strong></p>
+
+                  <!-- Message input -->
+                  <div class="form-outline mb-4">
+                    <textarea class="form-control" name="comment" id="form4Example3" rows="6"
+                      placeholder="Enter your feedback here..." required ></textarea>
+                  </div>
+                </div>
+                <div class="card-footer text-end">
+                  <button type="submit" class="btn">Submit</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+  </div>
+  </section>
+  </div>
+</body>
+<script src="/js/dashboard.js"></script>
+
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MessMaven</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark" id="head">
+        <div class="container">
+            <a class="navbar-brand" href="/">MessMaven</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item active" id="homeLink">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">SignUp</a>
+                    </li>
+                    <li class="nav-item" id="aboutUsLink">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item" id="helpLink">
+                        <a class="nav-link" href="#help">Help</a>
+                    </li>
+                    <li class="nav-item" id="admin">
+                        <a class="nav-link" href="/admin">Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+    <div class="container">
+        <div id="main">
+            <div>
+                <div class="loginForm">
+                    <h1>Login</h1>
+                    <form action="/login" method="post">
+                        <div class="mb-3">
+                            <label for="example" class="form-label">Email address</label>
+                            <input type="email" class="form-control" name="email" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" required autocomplete="off">
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="password" id="exampleInputPassword1"
+                                required autocomplete="off">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="loginbutton">Login</button>
+                    </form>
+                    <p><span>Don't have an account?</span><a href="/signup"> &nbsp;Create an account</a></p>
+                </div>
+            </div>
+
+            <div class="homeImage">
+                <img src="/images/homeImage.jpeg" alt="">
+                <p>Eat Better, Manage Smarter</p>
+            </div>
+        </div>
+        <hr>
+        <div id="about">
+            <h1>About Us</h1>
+            <div class="aboutItem">
+                <h5>Our Mission</h5>
+                <p>Our mission is to provide high-quality, nutritious meals to our customers while promoting healthy
+                    eating
+                    habits and a sense of community. We believe that food is not only essential for nourishment but can
+                    also
+                    bring people together and create a sense of connection. Our aim is to create a welcoming and
+                    inclusive
+                    environment where everyone feels comfortable and valued.</p>
+            </div>
+            <div class="aboutItem">
+                <h5>Our Values</h5>
+                <p> At our mess, we are committed to upholding the highest standards of quality, safety, and
+                    cleanliness. We source our ingredients from local and sustainable sources whenever possible and
+                    follow
+                    strict hygiene protocols to ensure that our food is safe and healthy. We also believe in treating
+                    our
+                    employees, customers, and the environment with respect and integrity.</p>
+            </div>
+
+
+            <div class="aboutItem">
+                <h5>Our Team</h5>
+                <p> At our mess, we are committed to upholding the highest standards of quality, safety, and
+                    cleanliness. We source our ingredients from local and sustainable sources whenever possible and
+                    follow
+                    strict hygiene protocols to ensure that our food is safe and healthy. We also believe in treating
+                    our
+                    employees, customers, and the environment with respect and integrity.</p>
+            </div>
+        </div>
+        <hr>
+        <div id="help">
+            <h1>Contact Us</h1>
+            <div class="helpItem">
+                <p> If you have any questions or feedback about our services, please don't hesitate to contact us. You
+                    can reach us by phone, email, or by filling out the contact form on our website.</p>
+                <p>Phone : <a href="#">9997034240</a></p>
+                <p>Email : <a href="#">adnanmirza417@gmail.com</a></p>
+                <p>Thank you for choosing our mess service. We look forward to serving you!
+                </p>
+            </div>
+            <div id="complaintForm">
+                <form action="/complaint" method="post">
+                    <div class="form-outline mb-4">
+                        <textarea  class="form-control" name="comment" id="textAreaExample6" rows="3"
+                            placeholder="Have any complaints..." required></textarea>
+                        <label class="form-label" for="textAreaExample6">Your identity will be completely
+                            anonymous.</label>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary">Go ahead</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <!-- <hr> -->
+    </div>
+
+
+
+    <!-- <footer>
+        <h5>Made with love by Adnaaaaaaan</h5>
+    </footer> -->
+</body>
+<script src="/js/index.js"></script>
+
+</html>
