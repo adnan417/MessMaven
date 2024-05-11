@@ -170,7 +170,7 @@ var otpCache;
 exports.bookMeal = (req, res) => {
     otpCache = new NodeCache({ stdTTL: 300 });
     const sgMail = require('@sendgrid/mail')
-    sgMail.setApiKey('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')
+    // sgMail.setApiKey('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')
 
     Student.findById(req.params.id)
         .then(student => {
