@@ -28,7 +28,8 @@ app.use(studentRoutes);
 //start server and connect to database
 
 // mongoose.connect('mongodb+srv://adnan:messmaven@clustermessmaven.nlimeey.mongodb.net/messmaven?retryWrites=true&w=majority')
-mongoose.connect('mongodb://127.0.0.1:27017/messmaven')
+// mongoose.connect('mongodb+srv://shariq:shariq@cluster0.gzirazk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://shariq:shariq@cluster0.gzirazk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 .then((result)=>{
     console.log("Connected to database");
 
@@ -37,5 +38,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/messmaven')
     })
 })
 .catch(err=>{
+    console.log(err);
     console.log("Error in connecting to database");
 })

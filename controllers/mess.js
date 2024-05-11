@@ -34,7 +34,7 @@ exports.getIndex=(req,res)=>{
 }
 
 exports.getAdminLogin=(req,res)=>{
-    res.render('adminLogin',{id:'647240a15569563a26452b21'});
+    res.render('adminLogin',{id:'663f2295125c9e886947e1d3'});
 }
 
 exports.postComplaint=(req,res)=>{
@@ -42,8 +42,9 @@ exports.postComplaint=(req,res)=>{
     const comment=req.body.comment;
     Admin.findOne()
     .then(admin=>{
-        
-        const complaints=[...admin.complaints];
+        console.log(admin);
+        // const complaints=[...admin.complaints];
+        const complaints=[];
         complaints.push(comment);
 
         admin.complaints=[...complaints];

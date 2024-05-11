@@ -11,7 +11,7 @@ exports.postAdminLogin = (req, res) => {
     const password = req.body.password;
 
     if (user === 'admin' && password === 'admin') {
-        res.redirect('/647240a15569563a26452b21/admin')
+        res.redirect('/663f2295125c9e886947e1d3/admin')
     }
     else{
         res.send(`<h1>Incorrect credentials for admin</h1><button><a href="/">Back to Home</a></button>`);
@@ -22,9 +22,9 @@ exports.getAdmin = (req,res)=>{
 
     Admin.findOne()
     .then(admin => {
-
+        console.log(admin);
         const complaints = [...admin.complaints];
-        return complaints;
+        return [];
     })
     .then(complaints => {
 
@@ -78,6 +78,7 @@ exports.getAdmin = (req,res)=>{
 
     })
     .catch(err => {
+        console.log(err);
         console.log("Error in fetching complaints.")
     })
 

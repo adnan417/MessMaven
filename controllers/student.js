@@ -19,7 +19,7 @@ exports.postLogin = (req, res) => {
     Student.findOne({ email: emailEntered, password: passwordEntered })
         .then(student => {
             const id = student._id;
-            res.redirect('/' + id+'/dashboard');
+            res.redirect('/' + id + '/dashboard');
         })
         .catch(err => {
             res.write("Invalid username or password");
@@ -71,7 +71,7 @@ exports.getDashboard = (req, res) => {
                     // console.log(menu);
 
                     res.render('dashboard', {
-                        id:student._id,
+                        id: student._id,
                         name: student.name,
                         attendance: attendance,
                         email: student.email,
@@ -89,19 +89,19 @@ exports.getDashboard = (req, res) => {
 
 }
 
-exports.postFeedback=(req,res)=>{
+exports.postFeedback = (req, res) => {
 
-    const rating=req.body.rating;
-    const comment=req.body.comment;
+    const rating = req.body.rating;
+    const comment = req.body.comment;
 
     const feedback = new Feedback({
-        rating:rating,
-        comment:comment,
-        student:req.params.id
+        rating: rating,
+        comment: comment,
+        student: req.params.id
     })
 
     feedback.save()
-    res.redirect('/'+ req.params.id +'/dashboard');
+    res.redirect('/' + req.params.id + '/dashboard');
 }
 
 exports.getProfile = (req, res) => {
@@ -113,7 +113,7 @@ exports.getProfile = (req, res) => {
             const dueAmount = calculateDue([...student.paymentStatus], perMonthCharges);
 
             res.render('profile', {
-                id:student._id,
+                id: student._id,
                 email: student.email,
                 password: student.password,
                 name: student.name,
@@ -135,7 +135,7 @@ exports.getProfile = (req, res) => {
 }
 
 exports.getEditProfile = (req, res) => {
-    res.render('edit',{id:req.params.id});
+    res.render('edit', { id: req.params.id });
 }
 
 exports.updateProfile = (req, res) => {
@@ -150,7 +150,7 @@ exports.updateProfile = (req, res) => {
             student.year = req.body.year;
 
             student.save();
-            res.redirect("/"+req.params.id+"/profile");
+            res.redirect("/" + req.params.id + "/profile");
         })
         .catch(err => {
             console.log("Error in updating details");
@@ -159,66 +159,86 @@ exports.updateProfile = (req, res) => {
 }
 
 //book meal
-const transporter = nodemailer.createTransport(sendgridTransport({
-    auth: {
-        api_key: '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'
-    }
-}));
+// const transporter = nodemailer.createTransport(sendgridTransport({
+//     auth: {
+//         api_key: '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'
+//     }
+// }));
 
 var otpCache;
 
 exports.bookMeal = (req, res) => {
     otpCache = new NodeCache({ stdTTL: 300 });
+    const sgMail = require('@sendgrid/mail')
+    sgMail.setApiKey('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')
 
     Student.findById(req.params.id)
-    .then(student=>{
+        .then(student => {
 
-        const email=student.email;
-        const otp = otpGenerator.generate(6, { digits: true, lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false });
-        otpCache.set(email, otp);
-        
-        transporter.sendMail({
-            to: email,
-            from: 'adnanmirza417@gmail.com',
-            subject: 'OTP for meal booking',
-            text: `Your One Time Password for meal booking is: ${otp} and thank you for using Mess Maven`
-        });
-    })
-    .catch(err=>{
-        console.log('Unregistered student');
-    })
+            const email = student.email;
+            const otp = otpGenerator.generate(6, { digits: true, lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false });
+            otpCache.set(email, otp);
+
+            const msg = {
+                to: email, // Change to your recipient
+                from: 'adnanmirza417@gmail.com', // Change to your verified sender
+                subject: 'MessMaven Meal Book request',
+                text: `Your One Time Password for meal booking is: ${otp} and thank you for using Mess Maven`,
+                html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+            }
+
+            sgMail
+                .send(msg)
+                .then(() => {
+                    console.log(msg);
+                    console.log('Email sent')
+                })
+                .catch((error) => {
+                    console.error(error)
+                })
+
+            // transporter.sendMail({
+            //     to: email,
+            //     from: 'adnanmirza417@gmail.com',
+            //     subject: 'OTP for meal booking',
+            //     text: `Your One Time Password for meal booking is: ${otp} and thank you for using Mess Maven`
+            // });
+        })
+        .catch(err => {
+            console.log('Unregistered student');
+        })
 
 }
 
 exports.verifyMeal = (req, res) => {
 
     Student.findById(req.params.id)
-    .then(student=>{
+        .then(student => {
 
-        // Retrieve the stored OTP from the cache
-        const cachedOTP = otpCache.get(student.email);
+            // Retrieve the stored OTP from the cache
+            const cachedOTP = otpCache.get(student.email);
 
-        if (!cachedOTP || cachedOTP !== req.body.otp) {
-            res.render('invalidOtp',{id:student._id});
-        }
-        else {
-    
-            // mark atendance
-            const today = new Date();
-            const month = today.getMonth();
-    
-            student.attendance[month]++;
-            student.save();
-    
-            res.render('validOtp',{id:student._id});
-        }
-    
-        // Clear the OTP from the cache after successful verification
-        otpCache.del(email);
-    })
-    .catch(err=>{
-        console.log('Error in verifying');
-    })
+            if (!cachedOTP || cachedOTP !== req.body.otp) {
+                res.render('invalidOtp', { id: student._id });
+            }
+            else {
+
+                // mark atendance
+                const today = new Date();
+                const month = today.getMonth();
+
+                student.attendance[month]++;
+                student.save();
+
+                res.render('validOtp', { id: student._id });
+            }
+
+            // Clear the OTP from the cache after successful verification
+            otpCache.del(email);
+        })
+        .catch(err => {
+            console.log('Error in verifying');
+        })
 
 }
 
@@ -230,7 +250,8 @@ exports.getPayment = (req, res, next) => {
         .then(student => {
 
             const perMonthCharges = calculateAmount([...student.attendance]);
-            const dueAmount = calculateDue([...student.paymentStatus], perMonthCharges);
+            // const dueAmount = calculateDue([...student.paymentStatus], perMonthCharges);
+            const dueAmount = 100;
 
             return stripe.checkout.sessions.create({
                 payment_method_types: ['card'],
@@ -241,20 +262,20 @@ exports.getPayment = (req, res, next) => {
                             product_data: {
                                 name: student.name,
                             },
-                            unit_amount: dueAmount*100,
+                            unit_amount: dueAmount * 100,
                         },
                         quantity: 1,
                     },
                 ],
                 mode: 'payment',
-                success_url: req.protocol + '://' + req.get('host') +'/' + req.params.id +'/success', // => http://localhost:3000
-                cancel_url: req.protocol + '://' + req.get('host') +'/' + req.params.id +'/failure'
+                success_url: req.protocol + '://' + req.get('host') + '/' + req.params.id + '/success', // => http://localhost:3000
+                cancel_url: req.protocol + '://' + req.get('host') + '/' + req.params.id + '/failure'
             });
         })
         .then(session => {
             res.render('payment', {
                 sessionId: session.id,
-                amount: session.amount_total/100,
+                amount: session.amount_total / 100,
             });
         })
         .catch(err => {
@@ -269,26 +290,25 @@ exports.getPayment = (req, res, next) => {
 exports.paymentSuccess = (req, res) => {
 
     Student.findById(req.params.id)
-    .then(student=>{
+        .then(student => {
 
-        //updating status
-        const paymentStatus = [...student.paymentStatus];
-        for(let i=0;i<12;i++)
-        {
-            if(paymentStatus[i]==='No')
-            paymentStatus[i]='Yes';
-        }
-        student.paymentStatus=[...paymentStatus];
-        student.save();
-        res.render("paymentSuccess",{id:student._id});
-    })
-    .catch(err=>{
-        console.log("Error in updating after clearing dues");
-    })
+            //updating status
+            const paymentStatus = [...student.paymentStatus];
+            for (let i = 0; i < 12; i++) {
+                if (paymentStatus[i] === 'No')
+                    paymentStatus[i] = 'Yes';
+            }
+            student.paymentStatus = [...paymentStatus];
+            student.save();
+            res.render("paymentSuccess", { id: student._id });
+        })
+        .catch(err => {
+            console.log("Error in updating after clearing dues");
+        })
 
 }
 
 exports.paymentFailure = (req, res) => {
-    res.render("paymentFailure",{id:student._id});
+    res.render("paymentFailure", { id: student._id });
 }
 
